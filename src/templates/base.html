@@ -1,0 +1,16 @@
+<html lang="en">
+    <head>
+        {% block head %}
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1"/>
+            <title>{% block title %}{% endblock title %}</title>
+
+            <link href="/static/css/output.css" rel="stylesheet">
+            <script src="https://unpkg.com/htmx.org@2.0.0/dist/htmx.min.js"></script>
+        {% endblock head %}
+    </head>
+    <body>
+        <p class="text-red-500 text-lg">Text</p>
+        {% block content %}{% endblock content %}
+    </body>
+</html>

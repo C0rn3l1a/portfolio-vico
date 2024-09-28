@@ -1,60 +1,68 @@
-use axum::{
-    routing::{get, post},
-    http::StatusCode,
-    Json, Router,
-};
-use serde::{Deserialize, Serialize};
-use tracing::info;
+use std::env;
+use axum::{response::Html, routing::get, Router};
+use dotenv::dotenv;
+use lazy_static::lazy_static;
+use tera::{Context, Tera};
+use tower_http::services::ServeDir;
+use tracing_subscriber::prelude::__tracing_subscriber_SubscriberExt;
+use tracing_subscriber::util::SubscriberInitExt;
+use tracing_subscriber::{filter, EnvFilter, Layer};
+
+lazy_static! {
+    pub static ref TEMPLATES: Tera = {
+        let mut tera = match Tera::new("src/templates/**/*.html") {
+            Ok(t) => t,
+            Err(e) => {
+                println!("Parsing error(s): {}", e);
+                ::std::process::exit(1);
+            }
+        };
+        tera.autoescape_on(vec!["html"]);
+        tera
+    };
+}
 
 #[tokio::main]
 async fn main() {
-    // initialize tracing
-    tracing_subscriber::fmt::init();
+    dotenv().ok();
+    setup_logger();
 
-    // build our application with a route
     let app = Router::new()
-        // `GET /` goes to `root`
-        .route("/", get(root))
-        // `POST /users` goes to `create_user`
-        .route("/users", post(create_user));
+        .route("/", get(home))
+        .nest_service("/static", ServeDir::new("src/static"));
 
-    // run our app with hyper, listening globally on port 3000
-    let listener = tokio::net::TcpListener::bind("0.0.0.0:3000").await.unwrap();
-    info!("Serving -> http://localhost:3000");
-    println!("Serving -> http://localhost:3000");
+    let port = env::var("PORT").unwrap_or(String::from("3000"));
+
+    let listener = tokio::net::TcpListener::bind(format!("0.0.0.0:{}", port))
+        .await
+        .unwrap();
+
     axum::serve(listener, app).await.unwrap();
 }
 
-// basic handler that responds with a static string
-async fn root() -> &'static str {
-    "Hello, World!"
-}
-
-async fn create_user(
-    // this argument tells axum to parse the request body
-    // as JSON into a `CreateUser` type
-    Json(payload): Json<CreateUser>,
-) -> (StatusCode, Json<User>) {
-    // insert your application logic here
-    let user = User {
-        id: 1337,
-        username: payload.username,
+async fn home() -> Html<String> {
+    let context = Context::new();
+    let s = match TEMPLATES.render("pages/home.html", &context) {
+        Ok(s) => s,
+        Err(e) => {
+            println!("Error: {}", e);
+            String::from("Error")
+        }
     };
-
-    // this will be converted into a JSON response
-    // with a status code of `201 Created`
-    (StatusCode::CREATED, Json(user))
+    return Html(s);
 }
 
-// the input to our `create_user` handler
-#[derive(Deserialize)]
-struct CreateUser {
-    username: String,
-}
+fn setup_logger() {
+    let logger = tracing_subscriber::fmt::layer().with_filter(filter::LevelFilter::DEBUG);
+    let log_level = env::var("LOG_LEVEL").unwrap_or(String::from("None"));
 
-// the output to our `create_user` handler
-#[derive(Serialize)]
-struct User {
-    id: u64,
-    username: String,
+    tracing_subscriber::registry()
+        .with(logger)
+        .with(EnvFilter::from_env("LOG_LEVEL"))
+        .init();
+
+    tracing::info!("Process started with:");
+    tracing::info!("---");
+    tracing::info!("- LOG_LEVEL: {log_level}");
+    tracing::info!("- Server is listening: http://localhost:3000");
 }
