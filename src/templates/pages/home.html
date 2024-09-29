@@ -1,11 +1,47 @@
 {% extends "base.html" %}
-{% block title %}Home{% endblock title %}
+
+{% block title %}Design System{% endblock title %}
+
 {% block head %}
     {{ super() }}
 {% endblock head %}
+
 {% block content %}
-    <h1>Index</h1>
-    <p class="text-green-300">
-      Welcome to my awesome homepage.
-    </p>
+
+<div class="flex flex-col gap-4">
+    <h3 class="text-3xl text-gray-800">Design system</h3>
+
+    <div>
+        <ul 
+         class="flex flex-shrink flex-grow-0 w-min border-b border-gray-200 -mb-px text-sm text-center" 
+         data-tabs-active-classes="!bg-primary-50 text-primary-500 border-primary-500"
+         id="default-tab" 
+         data-tabs-toggle="#default-tab-content" 
+         role="tablist"
+         >
+         {% for tab in ['Typography','Colours','Icons','Buttons'] %}
+         <li class="me-2" role="presentation">
+             <button 
+                          class="inline-block px-4 py-2 border-b-2 rounded-t-lg text-grey-600" 
+                          id="{{ tab | lower }}-tab" 
+                          data-tabs-target="#{{ tab | lower }}" 
+                          type="button" 
+                          role="tab" 
+                          aria-controls="{{ tab | lower }}" 
+                          aria-selected="false"
+                          >
+                          {{ tab }}
+             </button>
+         </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div id="default-tab-content">
+        {% include 'pages/design_system/typography.html' %}
+        {% include 'pages/design_system/colours.html' %}
+        {% include 'pages/design_system/icons.html' %}
+        {% include 'pages/design_system/buttons.html' %}
+    </div>
+</div>
+
 {% endblock content %}

@@ -45,7 +45,7 @@ async fn home() -> Html<String> {
     let s = match TEMPLATES.render("pages/home.html", &context) {
         Ok(s) => s,
         Err(e) => {
-            println!("Error: {}", e);
+            println!("Error: {:?}", e);
             String::from("Error")
         }
     };

@@ -7,10 +7,15 @@
 
             <link href="/static/css/output.css" rel="stylesheet">
             <script src="https://unpkg.com/htmx.org@2.0.0/dist/htmx.min.js"></script>
+            <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
         {% endblock head %}
     </head>
-    <body>
-        <p class="text-red-500 text-lg">Text</p>
-        {% block content %}{% endblock content %}
+    <body class="bg-gray-50 pt-">
+        <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+        {% include 'common/nav.html' %}
+        <main class="px-6 p-8">
+            {% block content %}{% endblock content %}
+        </main>
+        {% block script %}{% endblock script %}
     </body>
 </html>
