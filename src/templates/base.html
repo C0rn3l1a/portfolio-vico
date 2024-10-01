@@ -4,10 +4,16 @@
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1"/>
             <title>{% block title %}{% endblock title %}</title>
-
-            <link href="/static/css/output.css" rel="stylesheet">
+            <!-- HTMX -->
             <script src="https://unpkg.com/htmx.org@2.0.0/dist/htmx.min.js"></script>
+            <!-- FLOWBITE -->
             <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
+            <!-- FONTS -->
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+            <!-- TAILWIND STYLES -->
+            <link href="/static/css/output.css" rel="stylesheet">
         {% endblock head %}
     </head>
     <body class="bg-gray-50 pt-">

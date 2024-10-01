@@ -1,3 +1,4 @@
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
     content: ["./src/templates/**/*.{html,js}"],
@@ -37,6 +38,9 @@ module.exports = {
             }],
         },
         extend: {
+            fontFamily: {
+                'sans': ['"Montserrat"', 'sans'],
+            },
             colors: {
                 primary: {
                     50: '#E7EAF4',
