@@ -10,7 +10,7 @@ use tracing_subscriber::{filter, EnvFilter, Layer};
 
 lazy_static! {
     pub static ref TEMPLATES: Tera = {
-        let mut tera = match Tera::new("src/templates/**/*.html") {
+        let mut tera = match Tera::new("templates/**/*.html") {
             Ok(t) => t,
             Err(e) => {
                 println!("Parsing error(s): {}", e);
@@ -30,7 +30,7 @@ async fn main() {
     let app = Router::new()
         .route("/", get(home))
         .route("/healthz", get(health))
-        .nest_service("/static", ServeDir::new("src/static"));
+        .nest_service("/static", ServeDir::new("static"));
 
     let port = env::var("PORT").unwrap_or(String::from("3000"));
 
