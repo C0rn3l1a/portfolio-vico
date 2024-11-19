@@ -1,0 +1,9 @@
+services:
+  portfolio-vico:
+    container_name: portfolio-vico-i
+    image: portfolio-vico:latest
+    env_file:
+      - ./.env
+    ports:
+      - "3000:3000"
+

@@ -29,6 +29,7 @@ async fn main() {
 
     let app = Router::new()
         .route("/", get(home))
+        .route("/healthz", get(health))
         .nest_service("/static", ServeDir::new("src/static"));
 
     let port = env::var("PORT").unwrap_or(String::from("3000"));
@@ -52,9 +53,14 @@ async fn home() -> Html<String> {
     return Html(s);
 }
 
+async fn health() -> String {
+    return String::from("Server Alive");
+}
+
 fn setup_logger() {
     let logger = tracing_subscriber::fmt::layer().with_filter(filter::LevelFilter::DEBUG);
     let log_level = env::var("LOG_LEVEL").unwrap_or(String::from("None"));
+    let port = env::var("PORT").unwrap_or(String::from("3000"));
 
     tracing_subscriber::registry()
         .with(logger)
@@ -64,5 +70,5 @@ fn setup_logger() {
     tracing::info!("Process started with:");
     tracing::info!("---");
     tracing::info!("- LOG_LEVEL: {log_level}");
-    tracing::info!("- Server is listening: http://localhost:3000");
+    tracing::info!("- Server is listening: http://localhost:{port}");
 }
