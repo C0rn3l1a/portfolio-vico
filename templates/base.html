@@ -19,10 +19,10 @@
 
         {% endblock head %}
     </head>
-    <body class="bg-gray-50 pt-">
+    <body class="bg-gray-50">
         <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
         {% include 'common/nav.html' %}
-        <main class="px-6 p-8">
+        <main >
             {% block content %}{% endblock content %}
         </main>
         {% block script %}{% endblock script %}

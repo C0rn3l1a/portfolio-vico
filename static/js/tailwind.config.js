@@ -1,7 +1,7 @@
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    content: ["./src/templates/**/*.{html,js}"],
+    content: ["./templates/**/*.{html,js}"],
     theme: {
         fontSize: {
             'sm': ['12px', {
@@ -38,6 +38,9 @@ module.exports = {
             }],
         },
         extend: {
+            backgroundImage: {
+                'vico-gradient': "url('/static/img/background.png')",
+            },
             fontFamily: {
                 'sans': ['"Montserrat"', 'sans'],
             },
