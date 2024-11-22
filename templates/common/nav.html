@@ -1,11 +1,34 @@
-<nav class="fixed top-0 left-0 z-10 flex items-center gap-9 w-full bg-white px-4 py-2">
+<nav class="fixed top-0 left-0 z-40 flex items-center gap-9 w-full bg-gray-50 px-4 py-2">
     <a href="/">
         <span class="text-primary-500 font-bold italic">Victoria</span>
         <span class="text-secondary-500">Barrigon</span>
     </a>
-    <div class="flex ml-auto gap-9">
-        <!-- <a class="text-primary-500" href="/work">Work</a> -->
-        <!-- <a class="text-primary-500" href="/about">About</a> -->
-        <!-- <a class="text-primary-500" href="/resume">CV/Resume</a> -->
+    <div class="hidden md:flex ml-auto gap-9">
+        <a class="text-primary-500" href="/work">Work</a>
+        <a class="text-primary-500" href="/about">About</a>
+        <a class="text-primary-500" target="_blank" href="https://www.linkedin.com/in/victoriabarrigon/">LinkedIn</a>
+        <a class="text-primary-500" target="_blank" href="https://drive.google.com/file/d/1FnlEbG_W_7QJ7U8ZexJFY4GyRMhtX7M5/view?usp=sharing">CV/Resume</a>
+    </div>
+
+    <!-- sidebar (mobile) -->
+    <button
+        class="flex md:hidden ml-auto text-primary-500"
+        data-drawer-target="drawer-navigation" 
+        data-drawer-toggle="drawer-navigation" 
+        aria-controls="drawer-navigation"
+        data-drawer-placement="right"
+        >
+        <span class="material-symbols-outlined">
+            menu
+        </span>
+    </button>
+
+    <div id="drawer-navigation" class="fixed top-[40px] right-0 z-50 w-64 h-[calc(100vh-40px)] bg-gray-50 overflow-y-auto transition-transform translate-x-full" tabindex="-1" aria-labelledby="drawer-navigation-label">
+        <div class="flex flex-col items-end justify-end gap-2 p-4">
+        <a class="text-primary-500" href="/work">Work</a>
+        <a class="text-primary-500" href="/about">About</a>
+        <a class="text-primary-500" target="_blank" href="https://www.linkedin.com/in/victoriabarrigon/">LinkedIn</a>
+        <a class="text-primary-500" target="_blank" href="https://drive.google.com/file/d/1FnlEbG_W_7QJ7U8ZexJFY4GyRMhtX7M5/view?usp=sharing">CV/Resume</a>
+        </div>
     </div>
 </nav>

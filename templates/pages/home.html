@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Design System{% endblock title %}
+
+{% block head %}
+    {{ super() }}
+{% endblock head %}
+
+{% block content %}
+
+<div class="flex flex-col items-center justify-center h-full bg-cover" style="background-image: url('/static/img/background.png');">
+    <div class="flex flex-col items-center justify-center gap-4 max-w-3xl p-4">
+        <img class="w-16 h-16 bg-cover self-start mr-auto" src="/static/img/picture.png" alt="picture">
+        <h3 class="text-3xl font-normal text-gray-50">
+            Hi, I’m <span class="text-secondary-500 font-bold">Victoria</span> a <strong>UX/UI Designer</strong> with 
+            <strong>five years of experience</strong> creating user-friendly products that not only address challenges
+            but also engage and motivate users.
+        </h3>
+        <h5 class="text-xl text-gray-50 mr-auto">
+            Based in Melbourne, Australia 
+            <a 
+                role="link"
+                class="inline-flex items-center justify-center gap-4 px-4 rounded-md bg-primary-500 whitespace-nowrap" 
+                target="_blank"
+                href="https://drive.google.com/file/d/1FnlEbG_W_7QJ7U8ZexJFY4GyRMhtX7M5/view?usp=sharing">
+                My cv/resume 
+                <span class="material-symbols-outlined">
+                    open_in_new
+                </span>
+            </a>
+        </h5>
+    </div>
+</div>
+
+{% endblock content %}

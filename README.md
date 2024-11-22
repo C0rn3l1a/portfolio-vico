@@ -1,11 +1,12 @@
 # portfolio-vico
 Victoria Barrigon Portfolio
 
-to start run:
+to start run the following commands side by side:
+
 ```
-npx tailwindcss -i ./src/static/css/input.css -o ./src/static/css/output.css -c ./src/static/js/tailwind.config.js --watch
+npx tailwindcss -i ./static/css/input.css -o ./static/css/output.css -c ./static/js/tailwind.config.js --watch
 ```
 
 ```
-cargo run
+cargo watch -x run
 ```

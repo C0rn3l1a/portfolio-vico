@@ -29,6 +29,8 @@ async fn main() {
 
     let app = Router::new()
         .route("/", get(home))
+        .route("/work", get(under_construction))
+        .route("/about", get(under_construction))
         .route("/design_system", get(design_system))
         .route("/healthz", get(health))
         .nest_service("/static", ServeDir::new("static"));
@@ -43,6 +45,18 @@ async fn main() {
 }
 
 async fn home() -> Html<String> {
+    let context = Context::new();
+    let s = match TEMPLATES.render("pages/home.html", &context) {
+        Ok(s) => s,
+        Err(e) => {
+            println!("Error: {:?}", e);
+            String::from("Error")
+        }
+    };
+    return Html(s);
+}
+
+async fn under_construction() -> Html<String> {
     let context = Context::new();
     let s = match TEMPLATES.render("pages/under_construction.html", &context) {
         Ok(s) => s,
