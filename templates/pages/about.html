@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}About{% endblock title %}
+
+{% block head %}
+    {{ super() }}
+{% endblock head %}
+
+{% block content %}
+
+<div class="flex flex-col items-center justify-center min-h-svh pt-12 bg-cover bg-repeat" style="background-image: url('/static/img/background.png');">
+
+    <div class="flex flex-col md:flex-row items-center justify-center gap-4 max-w-4xl p-4">
+    <img class="w-16 h-16 bg-cover self-start mr-auto" src="/static/img/picture.png" alt="picture">
+    <div class="flex flex-col gap-4 w-full p-4 bg-gray-50 rounded-md">
+        <h3 class="text-3xl font-bold text-secondary-500">
+            👋 Hi! I’m Victoria, or Vico for short.
+        </h3>
+        <p>
+            I was born in Perth, grew up in Córdoba, Argentina, and now live in Melbourne. My experiences
+            growing up in different places have made me adaptable and given me a unique perspective when
+            it comes to problem-solving.
+        </p>
+
+        <p>
+            With a bachelor’s degree in Graphic Design from Blas Pascal University, my passion for UX/UI
+            design grew as I discovered its ability to combine creativity with data-driven insights and usability
+            testing. My thesis focused on redesigning the Hoyts Self-Serve Kiosk to enhance the user
+            experience.
+        </p>
+
+        <p>
+            For the past 5 years, I’ve worked as a UX/UI designer, handling everything from strategy to
+            delivering polished, user-friendly products. I believe great design should not only solve problems
+            but also inspire and connect with people.
+        </p>
+
+        <p>
+            My other hobbies include:
+            <ul>
+                <li>
+                    Avid Dungeons and Dragons player. I love playing D&D because it fosters creativity, collaboration, and immersive storytelling.
+                </li>
+                <li>
+                    Proud cat owner. At home, I'm accompanied by Madame, my loyal feline companion, who provides endless inspiration and motivation as I work.
+                </li>
+            </ul>
+        </p>
+
+        <p>
+            Thank you for visiting my portfolio! Don't hesitate to reach out and connect. 
+        </p>
+    </div>
+</div>
+</div>
+
+{% endblock content %}
