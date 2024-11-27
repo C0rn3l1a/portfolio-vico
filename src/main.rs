@@ -29,7 +29,7 @@ async fn main() {
 
     let app = Router::new()
         .route("/", get(home))
-        .route("/work", get(under_construction))
+        .route("/work/:work_name", get(under_construction))
         .route("/about", get(about))
         .route("/design_system", get(design_system))
         .route("/healthz", get(health))

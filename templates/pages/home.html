@@ -8,7 +8,7 @@
 
 {% block content %}
 
-<div class="flex flex-col items-center justify-center h-full bg-cover" style="background-image: url('/static/img/background.png');">
+<div class="flex flex-col items-center justify-center h-full bg-cover relative" style="background-image: url('/static/img/background.png');">
     <div class="flex flex-col items-center justify-center gap-4 max-w-3xl p-4">
         <img class="w-16 h-16 bg-cover self-start mr-auto" src="/static/img/picture.png" alt="picture">
         <h3 class="text-3xl font-normal text-gray-50">
@@ -20,7 +20,7 @@
             Based in Melbourne, Australia 
             <a 
                 role="link"
-                class="inline-flex items-center justify-center gap-4 px-4 rounded-md bg-primary-500 whitespace-nowrap" 
+                class="inline-flex items-center justify-center gap-4 h-10 p-2 ml-2 rounded-md bg-transparent border border-white whitespace-nowrap" 
                 target="_blank"
                 href="https://drive.google.com/file/d/1FnlEbG_W_7QJ7U8ZexJFY4GyRMhtX7M5/view?usp=sharing">
                 My cv/resume 
@@ -30,6 +30,15 @@
             </a>
         </h5>
     </div>
+
+    <a class="inline-flex items-center justify-center gap-4 absolute bottom-8 p-2 text-primary-50 rounded-md bg-primary-500 whitespace-nowrap cursor-pointer" href="#work">
+        View my work 
+        <span class="material-symbols-outlined">
+            face_3
+        </span>
+    </a>
 </div>
+
+{% include 'pages/work/list.html' %}
 
 {% endblock content %}
