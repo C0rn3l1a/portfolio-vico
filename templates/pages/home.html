@@ -8,35 +8,37 @@
 
 {% block content %}
 
-<div id="fancy" class="flex flex-col items-center justify-center h-full bg-cover relative">
-    <div class="flex flex-col items-center justify-center gap-4 max-w-3xl p-4">
-        <img class="w-16 h-16 bg-cover self-start mr-auto" src="/static/img/picture.png" alt="picture">
-        <h3 class="text-3xl font-normal text-gray-50">
-            Hi, I’m <span class="text-secondary-500 font-bold">Victoria</span> a <strong>UX/UI Designer</strong> with 
-            <strong>five years of experience</strong> creating user-friendly products that not only address challenges
-            but also engage and motivate users.
-        </h3>
-        <h5 class="text-xl text-gray-50 mr-auto">
-            Based in Melbourne, Australia 
-            <a 
+<div class="flex flex-col items-center justify-center h-full w-full bg-primary-500 relative z-0">
+    <div id="fancy" class="flex flex-col items-center justify-center h-full w-full bg-cover relative">
+        <div class="flex flex-col items-center justify-center gap-4 max-w-3xl p-4">
+            <img class="w-16 h-16 bg-cover self-start mr-auto" src="/static/img/picture.png" alt="picture">
+            <h3 class="text-3xl font-normal text-gray-50">
+                Hi, I’m <span class="text-secondary-500 font-bold">Victoria</span> a <strong>UX/UI Designer</strong> with 
+                <strong>five years of experience</strong> creating user-friendly products that not only address challenges
+                but also engage and motivate users.
+            </h3>
+            <h5 class="text-xl text-gray-50 mr-auto">
+                Based in Melbourne, Australia 
+                <a 
                 role="link"
                 class="inline-flex items-center justify-center gap-4 h-10 p-2 ml-2 rounded-md bg-transparent border border-white whitespace-nowrap" 
                 target="_blank"
-                href="https://drive.google.com/file/d/1FnlEbG_W_7QJ7U8ZexJFY4GyRMhtX7M5/view?usp=sharing">
-                My cv/resume 
-                <span class="material-symbols-outlined">
-                    open_in_new
-                </span>
-            </a>
-        </h5>
-    </div>
+                href="https://drive.google.com/file/d/13nNSbDh2ztEpaa25eEQSKMbSqVPDZgY0/view?usp=sharing">
+                    My cv/resume 
+                    <span class="material-symbols-outlined">
+                        open_in_new
+                    </span>
+                </a>
+            </h5>
+        </div>
 
-    <a class="inline-flex items-center justify-center gap-4 absolute bottom-8 p-2 text-primary-50 rounded-md bg-primary-500 whitespace-nowrap cursor-pointer" href="#work">
-        View my work 
-        <span class="material-symbols-outlined">
-            face_3
-        </span>
-    </a>
+        <a class="inline-flex items-center justify-center gap-4 absolute bottom-8 p-2 text-primary-50 rounded-md bg-primary-500 whitespace-nowrap cursor-pointer" href="#work">
+            View my work 
+            <span class="material-symbols-outlined">
+                face_3
+            </span>
+        </a>
+    </div>
 </div>
 
 {% include 'pages/work/list.html' %}
